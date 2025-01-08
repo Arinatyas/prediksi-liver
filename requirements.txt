@@ -1,0 +1,11 @@
+setuptools
+requests
+joblib==1.2.0
+cloudpickle==2.2.0
+pandas
+numpy==1.26.2
+streamlit
+flask
+pyngrok>=5.1.0
+jsonify
+pip==24.3.1
