@@ -254,19 +254,23 @@ column_names = [
 # output_df = pd.DataFrame(X_test_with_predictions, columns=column_names)
 # output_df.to_csv('hasil_test.csv', index=False)
 
-import cloudpickle
+import pandas as pd
+import numpy as np
+import joblib
 import streamlit as st
 
-# Simpan model menggunakan cloudpickle
-with open('random_forest_model.pkl', 'wb') as f:
-    cloudpickle.dump(rf, f)
-
+# ✅ Load pre-trained model (optimized with joblib for faster loading)
+@st.cache_resource
 def load_model():
-    with open('random_forest_model.pkl', 'rb') as f:
-        return cloudpickle.load(f)
+    return joblib.load('random_forest_model.pkl')
 
-# Memuat model hanya sekali
+# Load the model only once
 model = load_model()
+
+# ✅ Prediction function using the loaded model
+def predict_liver_disease(input_data):
+    prediction = model.predict(input_data)
+    return "Positive" if prediction[0] == 1 else "Negative"
 
 # ✅ Fungsi untuk memprediksi penyakit hati
 def predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkaline_phosphotase,
