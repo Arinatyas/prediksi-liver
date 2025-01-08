@@ -258,6 +258,7 @@ import cloudpickle
 import streamlit as st
 
 # Simpan model menggunakan cloudpickle
+@st.cache_resource
 with open('random_forest_model.pkl', 'wb') as f:
     cloudpickle.dump(rf, f)
 
@@ -298,9 +299,8 @@ total_protiens = st.number_input('Masukkan Total Proteins')
 albumin = st.number_input('Masukkan Albumin')
 albumin_and_globulin_ratio = st.number_input('Masukkan Albumin and Globulin Ratio')
 
-# 🔹 Prediksi dilakukan di latar belakang
-result = predict_liver_disease(input_data)
-
-# 🔹 Tombol untuk menampilkan hasil prediksi
 if st.button('Prediksi'):
+    result = predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkaline_phosphotase,
+                                   alamine_aminotransferase, aspartate_aminotransferase, total_protiens,
+                                   albumin, albumin_and_globulin_ratio)
     st.write(f'**Hasil Prediksi:** {result}')
