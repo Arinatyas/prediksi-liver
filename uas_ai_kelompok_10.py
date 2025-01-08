@@ -266,13 +266,13 @@ def load_model():
     with open('random_forest_model.pkl', 'rb') as f:
         return cloudpickle.load(f)
 
-# Memuat model hanya sekali
-model = load_model()
-
 # ✅ Prediction function using the loaded model
 def predict_liver_disease(input_data):
     prediction = model.predict(input_data)
     return "Positive" if prediction[0] == 1 else "Negative"
+
+# Memuat model hanya sekali
+model = load_model()
 
 # ✅ Fungsi untuk memprediksi penyakit hati
 def predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkaline_phosphotase,
@@ -299,12 +299,8 @@ total_protiens = st.number_input('Masukkan Total Proteins')
 albumin = st.number_input('Masukkan Albumin')
 albumin_and_globulin_ratio = st.number_input('Masukkan Albumin and Globulin Ratio')
 
-# Konversi input ke DataFrame untuk prediksi
-input_df = pd.DataFrame([user_data])
-
-# 🔹 Tombol Prediksi
 if st.button("Prediksi"):
-    result = predict_liver_disease(input_df)
+    result = predict_liver_disease(input_data)
     st.write(f"**Hasil Prediksi:** {result}")
 # if st.button('Prediksi'):
 #     result = predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkaline_phosphotase,
