@@ -259,6 +259,8 @@ import numpy as np
 import joblib
 import streamlit as st
 
+joblib.dump(rf, 'random_forest_model.pkl')
+
 # ✅ Load pre-trained model (optimized with joblib for faster loading)
 @st.cache_resource
 def load_model():
