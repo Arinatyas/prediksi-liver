@@ -255,6 +255,7 @@ column_names = [
 # output_df.to_csv('hasil_test.csv', index=False)
 
 import cloudpickle
+import streamlit as st
 
 # Simpan model menggunakan cloudpickle
 with open('random_forest_model.pkl', 'wb') as f:
