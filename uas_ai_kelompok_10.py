@@ -299,11 +299,11 @@ total_protiens = st.number_input('Masukkan Total Proteins')
 albumin = st.number_input('Masukkan Albumin')
 albumin_and_globulin_ratio = st.number_input('Masukkan Albumin and Globulin Ratio')
 
-if st.button("Prediksi"):
-    result = predict_liver_disease(input_data)
-    st.write(f"**Hasil Prediksi:** {result}")
-# if st.button('Prediksi'):
-#     result = predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkaline_phosphotase,
-#                                    alamine_aminotransferase, aspartate_aminotransferase, total_protiens,
-#                                    albumin, albumin_and_globulin_ratio)
-#     st.write(f'**Hasil Prediksi:** {result}')
+# if st.button("Prediksi"):
+#     result = predict_liver_disease(input_data)
+#     st.write(f"**Hasil Prediksi:** {result}")
+if st.button('Prediksi'):
+    result = predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkaline_phosphotase,
+                                   alamine_aminotransferase, aspartate_aminotransferase, total_protiens,
+                                   albumin, albumin_and_globulin_ratio)
+    st.write(f'**Hasil Prediksi:** {result}')
