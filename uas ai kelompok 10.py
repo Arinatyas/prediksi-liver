@@ -10,7 +10,7 @@ Original file is located at
 """
 import pandas as pd
 
-df = pd.read_csv("https://raw.githubusercontent.com/Arinatyas/artifisal-intelegent/refs/heads/main/indian_liver_patient.csv", encoding="utf-8")
+df = pd.read_csv("https://raw.githubusercontent.com/Arinatyas/prediksi-liver/refs/heads/main/indian_liver_patient.csv", encoding="utf-8")
 # df
 
 df.info()
@@ -43,7 +43,7 @@ df.drop_duplicates(inplace=True)
 # output_csv_file = 'cleaned_data.csv'
 # df.to_csv(output_csv_file, index=False)
 
-df = pd.read_csv('https://raw.githubusercontent.com/Arinatyas/artifisal-intelegent/refs/heads/main/cleaned_data%20(1).csv')
+df = pd.read_csv('https://raw.githubusercontent.com/Arinatyas/prediksi-liver/refs/heads/main/cleaned_data%20(1).csv')
 test_size = int(len(df) * 0.3)
 
 df = df.sample(frac=1, random_state=42).reset_index(drop=True)
@@ -260,13 +260,13 @@ import cloudpickle
 with open('random_forest_model.pkl', 'wb') as f:
     cloudpickle.dump(rf, f)
 
-import cloudpickle
-import numpy as np
-import streamlit as st
+@st.cache(allow_output_mutation=True)
+def load_model():
+    with open('random_forest_model.pkl', 'rb') as f:
+        return cloudpickle.load(f)
 
-# ✅ Memuat model Random Forest yang sudah disimpan
-with open('random_forest_model.pkl', 'rb') as f:
-    model = cloudpickle.load(f)
+# Memuat model hanya sekali
+model = load_model()
 
 # ✅ Fungsi untuk memprediksi penyakit hati
 def predict_liver_disease(age, gender, total_bilirubin, direct_bilirubin, alkaline_phosphotase,
