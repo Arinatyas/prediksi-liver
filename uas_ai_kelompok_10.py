@@ -258,10 +258,10 @@ import cloudpickle
 import streamlit as st
 
 # Simpan model menggunakan cloudpickle
-@st.cache_resource
 with open('random_forest_model.pkl', 'wb') as f:
     cloudpickle.dump(rf, f)
 
+@st.cache_resource
 def load_model():
     with open('random_forest_model.pkl', 'rb') as f:
         return cloudpickle.load(f)
