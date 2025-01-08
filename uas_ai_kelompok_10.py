@@ -254,19 +254,18 @@ column_names = [
 # output_df = pd.DataFrame(X_test_with_predictions, columns=column_names)
 # output_df.to_csv('hasil_test.csv', index=False)
 
-import pandas as pd
-import numpy as np
-import joblib
+import cloudpickle
 import streamlit as st
 
-joblib.dump(rf, 'random_forest_model.pkl')
+# Simpan model menggunakan cloudpickle
+with open('random_forest_model.pkl', 'wb') as f:
+    cloudpickle.dump(rf, f)
 
-# ✅ Load pre-trained model (optimized with joblib for faster loading)
-@st.cache_resource
 def load_model():
-    return joblib.load('random_forest_model.pkl')
+    with open('random_forest_model.pkl', 'rb') as f:
+        return cloudpickle.load(f)
 
-# Load the model only once
+# Memuat model hanya sekali
 model = load_model()
 
 # ✅ Prediction function using the loaded model
