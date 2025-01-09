@@ -251,5 +251,16 @@ column_names = [
     "Alkaline_Phosphotase", "Alamine_Aminotransferase", "Aspartate_Aminotransferase",
     "Total_Protiens", "Albumin", "Albumin_and_Globulin_Ratio", "predicted"
 ]
-# output_df = pd.DataFrame(X_test_with_predictions, columns=column_names)
-# output_df.to_csv('hasil_test.csv', index=False)
+output_df = pd.DataFrame(X_test_with_predictions, columns=column_names)
+output_df.to_csv('hasil_test.csv', index=False)
+
+import joblib
+
+joblib.dump(rf, 'random_forest_model.pkl')
+print("Model berhasil disimpan ke 'random_forest_model.pkl'")
+
+model = joblib.load('random_forest_model.pkl')
+
+import joblib
+
+joblib.dump(rf, 'random_forest_model.pkl')
