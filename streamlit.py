@@ -1,3 +1,12 @@
+import joblib
+
+joblib.dump(rf, 'random_forest_model.pkl')
+print("Model berhasil disimpan ke 'random_forest_model.pkl'")
+model = joblib.load('random_forest_model.pkl')
+import joblib
+
+joblib.dump(rf, 'random_forest_model.pkl')
+
 import cloudpickle
 import streamlit as st
 
