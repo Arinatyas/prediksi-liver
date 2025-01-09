@@ -1,3 +1,4 @@
+import pandas as pd
 test_data = pd.read_csv('https://raw.githubusercontent.com/Arinatyas/prediksi-liver/refs/heads/main/X_test.csv')
 
 if isinstance(X_test, pd.DataFrame):
