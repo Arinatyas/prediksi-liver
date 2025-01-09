@@ -1,4 +1,4 @@
-test_data = pd.read_csv('X_test.csv')
+test_data = pd.read_csv('https://raw.githubusercontent.com/Arinatyas/prediksi-liver/refs/heads/main/X_test.csv')
 
 if isinstance(X_test, pd.DataFrame):
     X_test = X_test.to_numpy()
@@ -15,8 +15,8 @@ column_names = [
     "Alkaline_Phosphotase", "Alamine_Aminotransferase", "Aspartate_Aminotransferase",
     "Total_Protiens", "Albumin", "Albumin_and_Globulin_Ratio", "predicted"
 ]
-output_df = pd.DataFrame(X_test_with_predictions, columns=column_names)
-output_df.to_csv('hasil_test.csv', index=False)
+# output_df = pd.DataFrame(X_test_with_predictions, columns=column_names)
+# output_df.to_csv('hasil_test.csv', index=False)
 
 import joblib
 
